@@ -1,10 +1,16 @@
-const form = document.querySelector('form')
+const { response } = require("../../server/app")
 
-form.addEventListener('submit', getRandomQuote())
 
-function getRandomQuote(e) {
+document.getElementsByTagName('form').addEventListener('submit', getRandomQuote(e))
+
+async function getRandomQuote(e) {
   e.preventDefault()
-  fetch('http://localhost:3000/quotes')
+  fetch('http://localhost:5000/quotes/random')
+    .then(resp => response.json())
     .then(resp => resp.text)
-    .then(document.getElementById('text').innerHTML = quote)
+    .then(document.getElementById('text').innerHTML = resp)
 }
+
+form.onsubmit = getRandomQuote
+
+console.log(getRandomQuote())

@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap');
+
 body {
-  background-image: url('images/background.jpeg');
+  background-image: url(images/background.jpeg);
   background-size: cover;
   background-position: center;
 
@@ -27,4 +29,16 @@ h1 {
 
 h3 {
   font-family: 'Dancing Script', 'cursive';
+}
+
+#main-title {
+  font-family: 'Cedarville Cursive';
+  font-size: 2rem;
+}
+
+.image-credits {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+  font-size: 18px;
 }

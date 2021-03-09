@@ -1,5 +1,7 @@
 const express = require('express')
 const app = express()
+app.listen(5000, () => console.log("listening at 5000"))
+
 const cors = require('cors');
 
 quotes = [
@@ -29,10 +31,23 @@ app.use(cors());
 app.get('/', (req, res) => res.send('Hello World!'))
 
 // To do: Create a route for retrieving all quotes
+app.get('/quotes/all', (req, res) => res.send(quotes))
 
 // To do: Create a route for retrieving a random quote
+function getRandomNumber(min, max) {
+  let step1 = max - min + 1;
+  let step2 = Math.random()*step1;
+  let result = Math.floor(step2) + min;
+
+  console.log(quotes[result])
+};
+
+app.get('/quotes/random', (req,res) => res.send(getRandomNumber(0,quotes.length)))
 
 // To do: Add handling for out-of-range index
 app.get('/quotes/:index', (req, res) => res.send(quotes[req.params.index]))
 
 // To do: Get the server running
+module.exports = app;
+
+
