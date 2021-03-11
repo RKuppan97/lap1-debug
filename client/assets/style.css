@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap');
 
 body {
-  background-image: url(images/background.jpeg);
+  background-image: url(https://cdn.pixabay.com/photo/2014/09/14/18/04/dandelion-445228__340.jpg);
   background-size: cover;
   background-position: center;
 
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'Cedarville';
 }
 
 section {
@@ -42,3 +43,4 @@ h3 {
   right: 16px;
   font-size: 18px;
 }
+

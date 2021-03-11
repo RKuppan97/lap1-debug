@@ -1,16 +1,13 @@
-const { response } = require("../../server/app")
+let buttonRandom = document.querySelector('section form');
+buttonRandom.addEventListener('submit', getRandomQuote)
 
-
-document.getElementsByTagName('form').addEventListener('submit', getRandomQuote(e))
-
-async function getRandomQuote(e) {
+function getRandomQuote(e) {
   e.preventDefault()
-  fetch('http://localhost:5000/quotes/random')
-    .then(resp => response.json())
-    .then(resp => resp.text)
-    .then(document.getElementById('text').innerHTML = resp)
+  fetch('http://localhost:5000/quotes/random', {})
+    .then(res => res.text())
+    .then(data => document.getElementById('text').textContent = data)
+    .catch(error => console.log('ERROR'))
 }
 
-form.onsubmit = getRandomQuote
 
-console.log(getRandomQuote())
+
