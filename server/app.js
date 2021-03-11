@@ -31,7 +31,7 @@ app.use(cors());
 app.get('/', (req, res) => res.send('Hello World!'))
 
 // To do: Create a route for retrieving all quotes
-app.get('/quotes/all', (req, res) => res.send(quotes))
+app.get('/quotes', (req, res) => res.send(quotes))
 
 // To do: Create a route for retrieving a random quote
 function getRandomNumber(min, max) {
@@ -39,15 +39,21 @@ function getRandomNumber(min, max) {
   let step2 = Math.random()*step1;
   let result = Math.floor(step2) + min;
 
-  console.log(quotes[result])
+  return quotes[result]
 };
 
 app.get('/quotes/random', (req,res) => res.send(getRandomNumber(0,quotes.length)))
 
 // To do: Add handling for out-of-range index
-app.get('/quotes/:index', (req, res) => res.send(quotes[req.params.index]))
+function outOfIndex(req, res) {
+  if (req.params.index >= 14) {
+    return res.send("Out of Index")
+  } else {
+    res.send(quotes[req.params.index-1])
+  }
+}
+
+app.get('/quotes/:index', (req, res) => res.send(outOfIndex(req, res)))
+
 
 // To do: Get the server running
-module.exports = app;
-
-
